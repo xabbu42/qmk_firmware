@@ -18,7 +18,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Ctrl   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |  Enter |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | LShift |  `~  |   Z  |   X  |   C  |   V  |   B  |           |   B  |   N  |   M  |   ,  |   .  |  /   | RShift |
+ * | LShift |   B  |   Z  |   X  |   C  |   V  |   B  |           |   B  |   N  |   M  |   ,  |   .  |  /   | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      | LAlt | LGui |                                       | RGui | RAlt |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_1,          KC_2,   KC_3,    KC_4,    KC_5,    KC_6,      KC_ESC,
         KC_TAB,        KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,      TG(SYMB),
         KC_LCTL,       KC_A,   KC_S,    KC_D,    KC_F,    KC_G,
-        OSM(MOD_LSFT), KC_GRV, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,
+        OSM(MOD_LSFT), KC_B,   KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,
         KC_NO,         KC_NO,  KC_NO,   KC_LALT, KC_LGUI,
                                                           KC_LCTL,   KC_LALT,
                                                                      KC_HOME,
