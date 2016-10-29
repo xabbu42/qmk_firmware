@@ -98,33 +98,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |  Space |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |   7    |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  Bkspc |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+ * |   8    |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  Home  |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |   9    |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |  End | PgDn | PgUp | Left |      |                                       |  F8  |  F9  | F10  | F11  | F12  |
+ *   |  0   |   ,  |   .  | Space| AltGr|                                       |  F8  |  F9  | F10  | F11  | F12  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | LCtrl|LShfit|------|       |------|      |      |
+ *                                 |LShift| LCTL |------|       |------|      |      |
  *                                 |      |      | LAlt |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
 // SYMBOLS
 [STAR] = KEYMAP(
        // left hand
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_SPC,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_BSPC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_HOME, KC_GRV,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_END,  KC_PGDN, KC_PGUP, KC_LEFT, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_7,    KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_8,    KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+       KC_9,    KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_0,    KC_COMM, KC_DOT,  KC_SPACE, KC_RCTL | KC_RALT,
                                        KC_TRNS,KC_TRNS,
                                                KC_TRNS,
-                               KC_LCTL,KC_LSFT,KC_LALT,
+                               KC_LSFT,KC_LCTL,KC_LALT,
        // right hand
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
