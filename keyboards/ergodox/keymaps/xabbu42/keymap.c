@@ -7,6 +7,14 @@
 #define STAR 2 // starcraft layer
 
 #define KC_ALTG (KC_RCTL | KC_RALT)
+#define M_AT_TILD   1
+#define M_LPRN_GRV  2
+#define M_LBRC_PIPE 3
+
+#define KC_T_AT   M(M_AT_TILD)
+#define KC_T_LPRN M(M_LPRN_GRV)
+#define KC_T_LBRC M(M_LBRC_PIPE)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -75,11 +83,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
 [SYMB] = KEYMAP(
        // left hand
-       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_TRNS,
-       KC_TRNS, KC_HASH, KC_DLR,  KC_LCBR, KC_RCBR, KC_EQL,  KC_TRNS,
-       KC_TRNS, KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_PERC,
-       KC_TRNS, KC_PLUS, KC_MINS, KC_LBRC, KC_RBRC, KC_ASTR, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_F1,   KC_F2,   KC_F3,   KC_F4,     KC_F5,   KC_F6,   KC_TRNS,
+       KC_TRNS, KC_HASH, KC_DLR,  KC_LCBR,   KC_RCBR, KC_EQL,  KC_TRNS,
+       KC_TRNS, KC_EXLM, KC_T_AT, KC_T_LPRN, KC_RPRN, KC_PERC,
+       KC_TRNS, KC_PLUS, KC_MINS, KC_T_LBRC, KC_RBRC, KC_ASTR, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,
                                                     KC_TRNS, KC_TRNS,
                                                              KC_TRNS,
                                            KC_TRNS, KC_TRNS, KC_TRNS,
@@ -189,7 +197,44 @@ const uint16_t PROGMEM fn_actions[] = {
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
-    return MACRO_NONE;
+	if(record->event.pressed){
+		switch(id){
+		case M_AT_TILD:
+			if(keyboard_report->mods & MOD_BIT(KC_LSFT)){
+				register_code(KC_2);
+				unregister_code(KC_2);
+			} else {
+				register_code(KC_LSFT);
+				register_code(KC_GRV);
+				unregister_code(KC_GRV);
+				unregister_code(KC_LSFT);
+			}
+			break;
+		case M_LPRN_GRV:
+			if(keyboard_report->mods & MOD_BIT(KC_LSFT)){
+				unregister_code(KC_LSFT);
+				register_code(KC_GRV);
+				unregister_code(KC_GRV);
+				register_code(KC_LSFT);
+			} else {
+				register_code(KC_LSFT);
+				register_code(KC_9);
+				unregister_code(KC_9);
+				unregister_code(KC_LSFT);
+			}
+			break;
+		case M_LBRC_PIPE:
+			if(keyboard_report->mods & MOD_BIT(KC_LSFT)){
+				register_code(KC_BSLS);
+				unregister_code(KC_BSLS);
+			} else {
+				register_code(KC_LBRC);
+				unregister_code(KC_LBRC);
+			}
+			break;
+		}
+	}
+	return MACRO_NONE;
 };
 
 // Runs just one time when the keyboard initializes.
