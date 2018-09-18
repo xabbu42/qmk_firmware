@@ -7,13 +7,8 @@
 #define STAR 2 // starcraft layer
 
 #define KC_ALTG (KC_RCTL | KC_RALT)
-#define M_AT_TILD   1
-#define M_LPRN_GRV  2
-#define M_LBRC_PIPE 3
-
-#define KC_T_AT   M(M_AT_TILD)
-#define KC_T_LPRN M(M_LPRN_GRV)
-#define KC_T_LBRC M(M_LBRC_PIPE)
+#define M_TOPSY_BSLS 1
+#define KC_TOPSY_BSLS M(M_TOPSY_BSLS)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -64,11 +59,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  F1    |  F2  |  F3  |  F4  |  F5  |  F6  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   #  |   $  |   {  |   }  |   =  |      |           |      |   &  |   7  |   8  |   9  |   ^  |        |
+ * |        |   !  |   &  |   {  |   }  |   =  |      |           |      |   +  |   7  |   8  |   9  |   *  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   !  | @/~  | (/`  |   )  |   %  |------|           |------|   |  |   4  |   5  |   6  |  '/" |        |
+ * |        |   #  |   $  |   (  |   )  |   |  |------|           |------|   -  |   4  |   5  |   6  |   .  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   +  | -/_  | [/|  |   ]  |   *  |      |           |      |   0  |   1  |   2  |   3  |   \  |        |
+ * |        |   `  |   '  |   [  |   ]  |   %  |      |           |      |   0  |   1  |   2  |   3  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |   0  |   0  |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -83,20 +78,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
 [SYMB] = KEYMAP(
        // left hand
-       KC_F1,   KC_F2,   KC_F3,   KC_F4,     KC_F5,   KC_F6,   KC_TRNS,
-       KC_TRNS, KC_HASH, KC_DLR,  KC_LCBR,   KC_RCBR, KC_EQL,  KC_TRNS,
-       KC_TRNS, KC_EXLM, KC_T_AT, KC_T_LPRN, KC_RPRN, KC_PERC,
-       KC_TRNS, KC_PLUS, KC_MINS, KC_T_LBRC, KC_RBRC, KC_ASTR, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,
+       KC_F1,   KC_F2,   KC_F3,     KC_F4,   KC_F5,   KC_F6,   KC_TRNS,
+       KC_TRNS, KC_EXLM, KC_AMPR,   KC_LCBR, KC_RCBR, KC_EQL,  KC_TRNS,
+       KC_TRNS, KC_HASH, KC_DOLLAR, KC_LPRN, KC_RPRN, KC_TOPSY_BSLS,
+       KC_TRNS, KC_GRV,  KC_QUOT,   KC_LBRC, KC_RBRC, KC_PERC, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS,
                                                     KC_TRNS, KC_TRNS,
                                                              KC_TRNS,
                                            KC_TRNS, KC_TRNS, KC_TRNS,
        // right hand
        KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
-       KC_TRNS, KC_AMPR, KC_7,   KC_8,    KC_9,    KC_CIRC, KC_TRNS,
-                KC_PIPE, KC_4,   KC_5,    KC_6,    KC_QUOT, KC_TRNS,
-       KC_TRNS, KC_0,    KC_1,   KC_2,    KC_3,    KC_BSLS, KC_TRNS,
-                         KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
+       KC_TRNS, KC_PLUS, KC_7,   KC_8,    KC_9,    KC_ASTR, KC_TRNS,
+                KC_MINS, KC_4,   KC_5,    KC_6,    KC_DOT,  KC_TRNS,
+       KC_TRNS, KC_0,    KC_1,   KC_2,    KC_3,    KC_SLSH, KC_TRNS,
+                         KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
@@ -199,37 +194,17 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
 	if(record->event.pressed){
 		switch(id){
-		case M_AT_TILD:
-			if(keyboard_report->mods & MOD_BIT(KC_LSFT)){
-				register_code(KC_2);
-				unregister_code(KC_2);
-			} else {
-				register_code(KC_LSFT);
-				register_code(KC_GRV);
-				unregister_code(KC_GRV);
-				unregister_code(KC_LSFT);
-			}
-			break;
-		case M_LPRN_GRV:
+		case M_TOPSY_BSLS:
 			if(keyboard_report->mods & MOD_BIT(KC_LSFT)){
 				unregister_code(KC_LSFT);
-				register_code(KC_GRV);
-				unregister_code(KC_GRV);
-				register_code(KC_LSFT);
-			} else {
-				register_code(KC_LSFT);
-				register_code(KC_9);
-				unregister_code(KC_9);
-				unregister_code(KC_LSFT);
-			}
-			break;
-		case M_LBRC_PIPE:
-			if(keyboard_report->mods & MOD_BIT(KC_LSFT)){
 				register_code(KC_BSLS);
 				unregister_code(KC_BSLS);
+				register_code(KC_LSFT);
 			} else {
-				register_code(KC_LBRC);
-				unregister_code(KC_LBRC);
+				register_code(KC_LSFT);
+				register_code(KC_BSLS);
+				unregister_code(KC_BSLS);
+				unregister_code(KC_LSFT);
 			}
 			break;
 		}
